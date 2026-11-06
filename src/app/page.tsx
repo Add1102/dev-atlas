@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FilosofiaEditorial from "../components/FilosofiaEditorial";
 import ComparacionLenguaje from "@/components/ComparacionLenguaje";
 import Categorias from "./Categorias";
 import LenguajesDestacados from "@/components/LenguajesDestacados";
@@ -100,12 +101,11 @@ export default function Home() {
       <main className="relative z-10 flex-grow">
         {/* Aquí se integrarán las secciones de los equipos:
             Hero, Lenguajes, Categorías, Comparador, Filosofía. */}
-
-        
         <Hero />
         <LenguajesDestacados />
         <Categorias />
         <ComparacionLenguaje />
+        <FilosofiaEditorial />
         {/* SECTION: CTA Final */}
         <section className="py-20 md:py-28 relative overflow-hidden">
           {/* Ambient Glow Spot */}
