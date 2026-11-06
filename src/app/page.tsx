@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LenguajesDestacados from "@/components/LenguajesDestacados";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
@@ -98,6 +99,7 @@ export default function Home() {
         {/* Aquí se integrarán las secciones de los equipos:
             Hero, Lenguajes, Categorías, Comparador, Filosofía. */}
         <LenguajesDestacados />
+        <Hero />
         {/* SECTION: CTA Final */}
         <section className="py-20 md:py-28 relative overflow-hidden">
           {/* Ambient Glow Spot */}
