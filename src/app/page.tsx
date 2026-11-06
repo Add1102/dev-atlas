@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ComparacionLenguaje from "@/components/ComparacionLenguaje";
 import Categorias from "./Categorias";
 import LenguajesDestacados from "@/components/LenguajesDestacados";
 import Hero from "@/components/Hero";
@@ -99,8 +100,12 @@ export default function Home() {
       <main className="relative z-10 flex-grow">
         {/* Aquí se integrarán las secciones de los equipos:
             Hero, Lenguajes, Categorías, Comparador, Filosofía. */}
+
+        
         <Hero />
         <LenguajesDestacados />
+        <Categorias />
+        <ComparacionLenguaje />
         {/* SECTION: CTA Final */}
         <section className="py-20 md:py-28 relative overflow-hidden">
           {/* Ambient Glow Spot */}
@@ -152,8 +157,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <Categorias />
       </main>
       <footer className="full-width bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 dark:border-outline-variant/20 flat no shadows">
         <div className="w-full max-w-[1440px] mx-auto px-margin py-space-xl flex flex-col md:flex-row justify-between items-center gap-space-md">
