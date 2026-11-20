@@ -1,6 +1,6 @@
 import { initializeApp, getApp, getApps } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -9,7 +9,14 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
 export const firebaseAuth = getAuth(app);
+
+export const firebaseApp = app;
+
+// Analytics solo se inicializa en el navegador.
+export const analyticsPromise =
+  typeof window !== "undefined"
+    ? isSupported().then((supported) => (supported ? getAnalytics(app) : null))
+    : Promise.resolve(null);
