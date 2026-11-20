@@ -8,10 +8,13 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 type AuthFormProps = { mode: "login" | "signup" };
 
 export default function AuthForm({ mode }: AuthFormProps) {
+  const router = useRouter();
+
   const esRegistro = mode === "signup";
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -44,8 +47,10 @@ export default function AuthForm({ mode }: AuthFormProps) {
         await updateProfile(resultado.user, {
           displayName: name.trim(),
         });
+        router.replace("/dashboard");
       } else {
         await signInWithEmailAndPassword(firebaseAuth, email.trim(), password);
+        router.replace("/dashboard");
       }
     } catch (error) {
       console.log("Error de Firebase Auth: ", error);
