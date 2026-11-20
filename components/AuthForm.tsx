@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { firebaseAuth } from "@/lib/firebaseConfig";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 type AuthFormProps = { mode: "login" | "signup" };
 
@@ -40,6 +44,8 @@ export default function AuthForm({ mode }: AuthFormProps) {
         await updateProfile(resultado.user, {
           displayName: name.trim(),
         });
+      } else {
+        await signInWithEmailAndPassword(firebaseAuth, email.trim(), password);
       }
     } catch (error) {
       console.log("Error de Firebase Auth: ", error);
@@ -49,13 +55,6 @@ export default function AuthForm({ mode }: AuthFormProps) {
           : "No se pudo iniciar sesion. Revisa tus credenciales.",
       );
     }
-
-    console.log({
-      modo: mode,
-      name: esRegistro ? name : undefined,
-      email: email,
-      password: password,
-    });
   }
 
   return (
